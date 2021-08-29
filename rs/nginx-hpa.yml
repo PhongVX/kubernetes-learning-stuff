@@ -1,0 +1,12 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: nginx-rs-scaler
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: ReplicaSet
+    name: nginx-rs
+  minReplicas: 3
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 50
